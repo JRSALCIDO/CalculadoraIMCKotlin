@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
@@ -33,7 +34,17 @@ class MainActivity : AppCompatActivity() {
         btnExit = findViewById(R.id.btn_exit)
 
         btnCalculate.setOnClickListener {
-            calculateBMI()
+            val num1 = etWeight.text.toString().trim()
+            val num2 = etHeight.text.toString().trim()
+
+            if (num1.isNotEmpty() && num2.isNotEmpty()) {
+                // Ambos campos contienen valores no vacíos
+                calculateBMI()
+            }  else {
+                Toast.makeText(this, "Ingrese Ambos Numeros", Toast.LENGTH_SHORT).show()
+            }
+
+
         }
 
         btnClear.setOnClickListener {
